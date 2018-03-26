@@ -84,7 +84,7 @@ public class Calculator : MonoBehaviour {
                 else
                     textAreaString = "0";
             }
-            else
+            else//删完之后模式置为0
             {
                 mode = 0;
             }
