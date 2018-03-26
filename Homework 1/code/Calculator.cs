@@ -9,7 +9,7 @@ public class Calculator : MonoBehaviour {
     private string preResult = "";//记录上一次运算的结果，字符串
     public int mode = 0;//模式有四种，加减乘除，默认为0;
 
-    public void Cal(int m, int n, string s)//四种计算模式
+    public void Cal(int m, int n, string s)//四种计算模式，参数一是本次运算的模式，参数二是下次运算的模式
     {
         if(mode == 1)//加
         {
@@ -102,7 +102,7 @@ public class Calculator : MonoBehaviour {
                 mode = 3;
             }
             else
-                Cal(mode, 4, textAreaString);
+                Cal(mode, 3, textAreaString);
             
         }
         if (GUI.Button(new Rect(210, 125, 50, 50), "7"))
@@ -138,7 +138,7 @@ public class Calculator : MonoBehaviour {
                 mode = 4;
             }
             else
-                Cal(mode, 3, textAreaString);
+                Cal(mode, 4, textAreaString);
         }
         if (GUI.Button(new Rect(210, 180, 50, 50), "4"))
         {
