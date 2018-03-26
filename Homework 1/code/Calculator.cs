@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,43 +9,59 @@ public class Calculator : MonoBehaviour {
     private string preResult = "";//记录上一次运算的结果，字符串
     public int mode = 0;//模式有四种，加减乘除，默认为0;
 
-    public void Cal(int m, string s)//四种计算模式
+    public void Cal(int m, int n, string s)//四种计算模式
     {
         if(mode == 1)//加
         {
             string temp = textAreaString.Substring(preResult.Length+1);
             double num = System.Convert.ToDouble(preResult) + System.Convert.ToDouble(temp);
             textAreaString = preResult = num.ToString("0.0");
-            mode = 0;
+            mode = n;
         }
         else if (mode == 2)//减
         {
             string temp = textAreaString.Substring(preResult.Length+1);
             double num = System.Convert.ToDouble(preResult) - System.Convert.ToDouble(temp);
             textAreaString = preResult = num.ToString("0.0");
-            mode = 0;
+            mode = n;
         }
         else if (mode == 3)//乘
         {
             string temp = textAreaString.Substring(preResult.Length+1);
             double num = System.Convert.ToDouble(preResult) * System.Convert.ToDouble(temp);
             textAreaString = preResult = num.ToString("0.0");
-            mode = 0;
+            mode = n;
         }
         else if (mode == 4)//除
         {
             string temp = textAreaString.Substring(preResult.Length+1);
             double num = System.Convert.ToDouble(preResult) / System.Convert.ToDouble(temp);
             textAreaString = preResult = num.ToString("0.0");
-            mode = 0;
+            mode = n;
         }
-        if (textAreaString == "0.0")
+        if (textAreaString == "0.0")//去除末尾多余的0
         {
-            textAreaString = "0";
+            preResult = textAreaString = "0";
         }
         else if (textAreaString.Substring(textAreaString.Length - 2) == ".0")
         {
-            textAreaString = textAreaString.Substring(0, textAreaString.Length - 2);
+            preResult = textAreaString = textAreaString.Substring(0, textAreaString.Length - 2);
+        }
+        if(mode == 1)
+        {
+            textAreaString += "+";
+        }
+        else if(mode == 2)
+        {
+            textAreaString = textAreaString + "-";
+        }
+        else if(mode == 3)
+        {
+            textAreaString += "×";
+        }
+        else if(mode == 4)
+        {
+            textAreaString += "÷";
         }
         Debug.Log("Succeed!");//提示
     }
@@ -86,7 +102,7 @@ public class Calculator : MonoBehaviour {
                 mode = 3;
             }
             else
-                Cal(mode, textAreaString);
+                Cal(mode, 4, textAreaString);
             
         }
         if (GUI.Button(new Rect(210, 125, 50, 50), "7"))
@@ -122,7 +138,7 @@ public class Calculator : MonoBehaviour {
                 mode = 4;
             }
             else
-                Cal(mode, textAreaString);
+                Cal(mode, 3, textAreaString);
         }
         if (GUI.Button(new Rect(210, 180, 50, 50), "4"))
         {
@@ -158,7 +174,7 @@ public class Calculator : MonoBehaviour {
                 mode = 1;
             }
             else
-                Cal(mode, textAreaString);
+                Cal(mode, 1, textAreaString);
         }
         if (GUI.Button(new Rect(210, 235, 50, 50), "1"))
         {
@@ -193,7 +209,7 @@ public class Calculator : MonoBehaviour {
                 mode = 2;
             }
             else
-                Cal(mode, textAreaString);
+                Cal(mode, 2, textAreaString);
         }
         if (GUI.Button(new Rect(210, 290, 105, 50), "0"))
         {
@@ -205,7 +221,7 @@ public class Calculator : MonoBehaviour {
         }
         if (GUI.Button(new Rect(320, 290, 105, 50), "="))
         {
-            Cal(mode, textAreaString);//计算
+            Cal(mode, 0, textAreaString);//计算
         }
     }
 }
