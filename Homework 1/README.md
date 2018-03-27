@@ -1,7 +1,7 @@
 # README
 
 #### 张星  ####学号：16340294  ####邮箱：1401046908@qq.com
-#### CSDN博客：[Zhangxing's Blog](https://blog.csdn.net/Duke_Star/article/details/79710105)
+#### CSDN博客：[ZhangXing's Blog](https://blog.csdn.net/Duke_Star/article/details/79710105)
 
 #### 简答题为第一题答案，code为游戏代码，images为图片，video包含演示视频。
 
